@@ -6,6 +6,11 @@
  * https://docs.particle.io/firmware/best-practices/firmware-template/
  */
 
+// Blynk
+#define BLYNK_TEMPLATE_ID "TMPL2hejoPvA3"
+#define BLYNK_TEMPLATE_NAME "Photon"
+#define BLYNK_AUTH_TOKEN "N6f-kXaUZWYlsEYQtC_AsFFka62kWxX0"
+
 // Include Particle Device OS APIs
 #include "Particle.h"
 
