@@ -73,14 +73,16 @@ class diceSet
         cout << "three of a kind : " << this->threeOfAKind() << endl;
         cout << "four of a kind : " << this->fourOfAKind() << endl;
         cout << "full house: " << this->fullHouse() << endl;
-
+        cout << "small straight: " << this->smallStraight() << endl;
+        cout << "large straight: " << this->largeStraight() << endl;
         cout << "Yahtzee: " << this->yahtzee() << endl;
+        cout << endl;
         
     }
 
     void select(int index)
     {
-        if (0 < index && index < NUM_DICE)
+        if (0 <= index && index < NUM_DICE)
         {
             selected[index] = !selected[index];
         }
@@ -171,7 +173,7 @@ class diceSet
         {
             for (int i = 0; i < NUM_DICE; i++)
             {
-                if (!(this->countNum(i) >= 2))
+                if (!(this->countNum(hand[i]) >= 2))
                 {
                     return 0;
                 }
@@ -201,23 +203,66 @@ class diceSet
                 }
             }
         }
+        return sortedHand;
     }
-/*
+
+    int countConsec(int* sortedHand, int index)
+    {
+        int consecCount = 0;
+        for (int i = index; i < NUM_DICE - 1; i++)
+        {
+            int j = i + 1;
+            if (sortedHand[j] == sortedHand[i] + 1)
+            {
+                consecCount++;
+            }
+            else{
+                break;
+            }
+        }
+        return consecCount;
+    }
+
+    int maxConsec(int* sortedHand)
+    {
+        int mConsec = 0;
+        for (int i = 0; i < NUM_DICE; i++)
+        {
+            int consecCount = countConsec(sortedHand, i);
+            if (consecCount > mConsec)
+            {
+                mConsec = consecCount;
+            }
+        }
+        return mConsec;
+    }
+
     int smallStraight()
     {
         int* sortedHand = this->sort();
-
-        for (int i = 0; i < NUM_DICE; i++)
-        {
-
+        if (maxConsec(sortedHand) >= 3) {
+            delete[] sortedHand;
+            return 30;
+        }
+        else{
+            delete[] sortedHand;
+            return 0;
         }
     }
 
     int largeStraight()
     {
-
+        int* sortedHand = this->sort();
+        if (maxConsec(sortedHand) >= 4) {
+            delete[] sortedHand;
+            return 40;
+        }
+        else{
+            delete[] sortedHand;
+            return 0;
+        }
     }
-*/
+
     private:
     dice* die;
     int hand[NUM_DICE] = {};
@@ -232,21 +277,28 @@ int main()
     diceSet fiveDice;
     fiveDice.print();
     char input = 'y';
-    while (input == 'y')
+    while (true)
     {
-        fiveDice.roll();
-        fiveDice.print();
-        cout << "roll again? (y/n) or select dice (#) ";
+        cout << "roll? (y/n) or select dice (#) ";
         cin >> input;
         int val = input - '0';
         while (0 < val && val <= NUM_DICE)
         {
             fiveDice.select(val - 1);
             fiveDice.print();
-            cout << "roll again? (y/n) or select dice (#) ";
+            cout << "roll? (y/n) or select dice (#) ";
             cin >> input;
             val = input - '0';
         }
+        if (input == 'y')
+        {
+            fiveDice.roll();
+            fiveDice.print();
+        }
+        else
+        {
+            break;
+        }      
     }
     return 0;
 }
