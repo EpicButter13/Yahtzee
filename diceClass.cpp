@@ -272,7 +272,8 @@ class diceSet
 
 int main()
 {
-    
+    int totalScore = 0; //variable to keep track of player score for their three rolls
+
     srand(time(0));
     diceSet fiveDice;
     fiveDice.print();
