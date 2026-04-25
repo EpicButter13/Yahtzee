@@ -26,8 +26,8 @@ using namespace std;
 
 // Pins
 // LCD
-#define LCD_RS_PIN D8
-#define LCD_E_PIN D9
+#define LCD_RS_PIN S3
+#define LCD_E_PIN S4
 #define LCD_D4_PIN A0
 #define LCD_D5_PIN A1
 #define LCD_D6_PIN A2
@@ -35,7 +35,8 @@ using namespace std;
 // BUZZER
 #define BUZZER_PIN D7
 // BUTTON
-#define PUSH_BUTTON_PIN D0
+#define BLUE_PUSH_BUTTON_PIN D0
+#define GREEN_PUSH_BUTTON_PIN D10
 // SWITCH
 #define SWITCH_ONE_PIN D1
 #define SWITCH_TWO_PIN D2
@@ -45,7 +46,8 @@ using namespace std;
 
 
 // Variables
-string diceRolls;
+String diceRolls;
+
 LiquidCrystal lcd(
   LCD_RS_PIN,
   LCD_E_PIN,
@@ -56,16 +58,29 @@ LiquidCrystal lcd(
 );
 
 // Functions
-void convertRollsToInts(string diceRolls);
+int convertStringRollsToInts(String diceRolls) {
+  return 0;
+};
+
+int* convertStringtoArray(String diceRolls) {
+  int* array = new int[5];
+  for (int i = 0; i < 5; i++) {
+    String roll = diceRolls.substring(i, 1);
+    array[i] = roll.toInt();
+  }
+  return array;
+}
 
 // setup() runs once, when the device is first turned on
 void setup() {
   // Begin Instruments
+  delay(1000);
   Serial.begin(9600);
   lcd.begin(16, 2);
 
   // Pin Modes
-  pinMode(PUSH_BUTTON_PIN, INPUT);
+  pinMode(BLUE_PUSH_BUTTON_PIN, INPUT);
+  pinMode(GREEN_PUSH_BUTTON_PIN, INPUT);
   pinMode(BUZZER_PIN, OUTPUT);
   pinMode(SWITCH_ONE_PIN, INPUT);
   pinMode(SWITCH_TWO_PIN, INPUT);
@@ -74,8 +89,8 @@ void setup() {
   pinMode(SWITCH_FIVE_PIN, INPUT);
 
   // Cloud Variables + Functions
-  //Particle.variable("DiceRolls", diceRolls);
-  //Particle.function("ConvertRollsToInts", convertRollsToInts);
+  Particle.variable("DiceRolls", diceRolls);
+  Particle.function("ConvertStringRollsToInts", convertStringRollsToInts);
 
 }
 
@@ -83,5 +98,28 @@ void setup() {
 void loop() {
   
   Serial.println("Test");
+  lcd.setCursor(0,0);
+  lcd.print("HELLO");
+
+  int* testArray = convertStringtoArray("12345");
+  for (int i = 0; i < 5; i++) {
+    Serial.println(testArray[i]);
+  }
+
+}
+
+
+void ifButtonsPressed() {
+
+  boolean blueButtonValue = digitalRead(BLUE_PUSH_BUTTON_PIN);
+  boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
+
+  if (blueButtonValue) {
+
+  }
+
+  if (greenButtonValue) {
+
+  }
 
 }
