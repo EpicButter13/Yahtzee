@@ -46,8 +46,13 @@ using namespace std;
 
 
 // Variables
-String diceRolls;
-
+int diceRoll1 = 0;
+int diceRoll2 = 0;
+int diceRoll3 = 0;
+int diceRoll4 = 0;
+int diceRoll5 = 0;
+int rollsLeft = 3;
+int score;
 LiquidCrystal lcd(
   LCD_RS_PIN,
   LCD_E_PIN,
@@ -58,9 +63,9 @@ LiquidCrystal lcd(
 );
 
 // Functions
-int convertStringRollsToInts(String diceRolls) {
-  return 0;
-};
+// int convertStringRollsToInts(String diceRolls) {
+//   return 0;
+// };
 
 int* convertStringtoArray(String diceRolls) {
   int* array = new int[5];
@@ -89,22 +94,30 @@ void setup() {
   pinMode(SWITCH_FIVE_PIN, INPUT);
 
   // Cloud Variables + Functions
-  Particle.variable("DiceRolls", diceRolls);
-  Particle.function("ConvertStringRollsToInts", convertStringRollsToInts);
+  Particle.variable("DiceRoll1", diceRoll1);
+  Particle.variable("DiceRoll2", diceRoll2);
+  Particle.variable("DiceRoll3", diceRoll3);
+  Particle.variable("DiceRoll4", diceRoll4);
+  Particle.variable("DiceRoll5", diceRoll5);
+  Particle.variable("RollsLeft", rollsLeft);
+  Particle.variable("Score", score);
 
 }
 
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
-  
-  Serial.println("Test");
-  lcd.setCursor(0,0);
-  lcd.print("HELLO");
 
-  int* testArray = convertStringtoArray("12345");
-  for (int i = 0; i < 5; i++) {
-    Serial.println(testArray[i]);
-  }
+  
+
+  lcd.setCursor(0,0);
+  lcd.println("Rolls: ");
+  lcd.setCursor(0, 1);
+  lcd.println("Rolls Left: ");
+  lcd.println(rollsLeft);
+
+
+
+  ifButtonsPressed();
 
 }
 
@@ -119,7 +132,7 @@ void ifButtonsPressed() {
   }
 
   if (greenButtonValue) {
-
+    
   }
 
 }
