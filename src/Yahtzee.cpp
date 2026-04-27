@@ -56,7 +56,7 @@ int diceRoll3 = fiveDice->getDiceValue(3);
 int diceRoll4 = fiveDice->getDiceValue(4);
 int diceRoll5 = fiveDice->getDiceValue(5);
 int rollsLeft = fiveDice->getRolls();
-string scoreData;
+String scoreData;
 LiquidCrystal lcd(
   LCD_RS_PIN,
   LCD_E_PIN,
@@ -79,6 +79,38 @@ int* convertStringtoArray(String diceRolls) {
   }
   return array;
 }
+/* From the web page javascript code; to see order in which scores are interpreted by the webpage
+must packaged score data accordingly
+const ids = [
+        "ones_score",
+        "twos_score",
+        "threes_score",
+        "fours_score",
+        "fives_score",
+        "sixes_score",
+        "three_kind_score",
+        "four_kind_score",
+        "full_house_score",
+        "small_straight_score",
+        "large_straight_score",
+        "yahtzee_score",
+        "chance_score"
+    ];
+*/
+void updateScore() {
+  score += fiveDice->basicHand(1) + ",";
+  score += fiveDice->basicHand(2) + ",";
+  score += fiveDice->basicHand(3) + ",";
+  score += fiveDice->basicHand(4) + ",";
+  score += fiveDice->basicHand(5) + ",";
+  score += fiveDice->basicHand(6) + ",";
+  score += fiveDice->threeOfAKind() + ",";
+  score += fiveDice->fourOfAKind() + ",";
+  score += fiveDice->smallStraight() + ",";
+  score += fiveDice->largeStraight() + ",";
+  score += fiveDice->yahtzee() + ",";
+  score += fiveDice->handSum() + ",";
+}
 
 void ifButtonsPressed() {
 
@@ -93,6 +125,7 @@ void ifButtonsPressed() {
     diceRoll3 = fiveDice->getDiceValue(3);
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
+    updateScore();
     delay(250);
   }
 
@@ -105,6 +138,7 @@ void ifButtonsPressed() {
     diceRoll3 = fiveDice->getDiceValue(3);
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
+    updateScore();
   }
 
 }
