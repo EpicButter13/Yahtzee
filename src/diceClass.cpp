@@ -275,36 +275,36 @@ class diceSet
     int rolls;
 };
 
-int main()
-{
-    int totalScore = 0; //variable to keep track of player score for their three rolls
+// int main()
+// {
+//     int totalScore = 0; //variable to keep track of player score for their three rolls
 
-    srand(time(0));
-    diceSet fiveDice;
-    fiveDice.print();
-    char input = 'y';
-    while (true)
-    {
-        cout << "roll? (y/n) or select dice (#) ";
-        cin >> input;
-        int val = input - '0';
-        while (0 < val && val <= NUM_DICE)
-        {
-            fiveDice.select(val - 1);
-            fiveDice.print();
-            cout << "roll? (y/n) or select dice (#) ";
-            cin >> input;
-            val = input - '0';
-        }
-        if (input == 'y')
-        {
-            fiveDice.roll();
-            fiveDice.print();
-        }
-        else
-        {
-            break;
-        }      
-    }
-    return 0;
-}
+//     srand(time(0));
+//     diceSet fiveDice;
+//     fiveDice.print();
+//     char input = 'y';
+//     while (true)
+//     {
+//         cout << "roll? (y/n) or select dice (#) ";
+//         cin >> input;
+//         int val = input - '0';
+//         while (0 < val && val <= NUM_DICE)
+//         {
+//             fiveDice.select(val - 1);
+//             fiveDice.print();
+//             cout << "roll? (y/n) or select dice (#) ";
+//             cin >> input;
+//             val = input - '0';
+//         }
+//         if (input == 'y')
+//         {
+//             fiveDice.roll();
+//             fiveDice.print();
+//         }
+//         else
+//         {
+//             break;
+//         }      
+//     }
+//     return 0;
+// }
