@@ -76,6 +76,21 @@ int* convertStringtoArray(String diceRolls) {
   return array;
 }
 
+void ifButtonsPressed() {
+
+  boolean blueButtonValue = digitalRead(BLUE_PUSH_BUTTON_PIN);
+  boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
+
+  if (blueButtonValue) {
+
+  }
+
+  if (greenButtonValue) {
+    
+  }
+
+}
+
 // setup() runs once, when the device is first turned on
 void setup() {
   // Begin Instruments
@@ -107,10 +122,10 @@ void setup() {
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
 
-  
+
 
   lcd.setCursor(0,0);
-  lcd.println("Rolls: ");
+  lcd.println("Rolls: 1 2 3 4 5");
   lcd.setCursor(0, 1);
   lcd.println("Rolls Left: ");
   lcd.println(rollsLeft);
@@ -118,21 +133,5 @@ void loop() {
 
 
   ifButtonsPressed();
-
-}
-
-
-void ifButtonsPressed() {
-
-  boolean blueButtonValue = digitalRead(BLUE_PUSH_BUTTON_PIN);
-  boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
-
-  if (blueButtonValue) {
-
-  }
-
-  if (greenButtonValue) {
-    
-  }
 
 }
