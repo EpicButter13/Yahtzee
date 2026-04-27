@@ -200,11 +200,11 @@ void setup() {
   pinMode(BLUE_PUSH_BUTTON_PIN, INPUT);
   pinMode(GREEN_PUSH_BUTTON_PIN, INPUT);
   pinMode(BUZZER_PIN, OUTPUT);
-  pinMode(SWITCH_ONE_PIN, INPUT);
-  pinMode(SWITCH_TWO_PIN, INPUT);
-  pinMode(SWITCH_THREE_PIN, INPUT);
-  pinMode(SWITCH_FOUR_PIN, INPUT);
-  pinMode(SWITCH_FIVE_PIN, INPUT);
+  pinMode(SWITCH_ONE_PIN, INPUT_PULLDOWN);
+  pinMode(SWITCH_TWO_PIN, INPUT_PULLDOWN);
+  pinMode(SWITCH_THREE_PIN, INPUT_PULLDOWN);
+  pinMode(SWITCH_FOUR_PIN, INPUT_PULLDOWN);
+  pinMode(SWITCH_FIVE_PIN, INPUT_PULLDOWN);
   // Cloud Variables + Functions
   Particle.variable("RollsLeft", rollsLeft);
   Particle.variable("roll", score);
