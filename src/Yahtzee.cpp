@@ -120,7 +120,7 @@ void ifButtonsPressed() {
   boolean blueButtonValue = digitalRead(BLUE_PUSH_BUTTON_PIN);
   boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
 
-  if (blueButtonValue) {
+  if (blueButtonValue && fiveDice->getRolls() != 0) {
     fiveDice->roll();
     rollsLeft = fiveDice->getRolls();
     diceRoll1 = fiveDice->getDiceValue(1);
