@@ -1,4 +1,4 @@
-#include <iostream>
+//#include <iostream>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
@@ -38,7 +38,6 @@ class diceSet
     public:
     diceSet()
     {
-        die = new dice;
         rolls = 3;
     }
     
@@ -48,7 +47,7 @@ class diceSet
         {
             if (!selected[i])
             {
-                hand[i] = die->roll();
+                hand[i] = die.roll();
             }
         }
         rolls--;
@@ -58,7 +57,7 @@ class diceSet
     {
         return rolls;
     }
-    
+ /*   
     void print()
     {
         cout << "Rolls left: " << rolls << endl;
@@ -84,7 +83,7 @@ class diceSet
         cout << endl;
         
     }
-
+*/
     void select(int index)
     {
         if (0 <= index && index < NUM_DICE)
@@ -269,7 +268,7 @@ class diceSet
     }
 
     private:
-    dice* die;
+    dice die;
     int hand[NUM_DICE] = {};
     bool selected[NUM_DICE] = {};
     int rolls;
