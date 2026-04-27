@@ -101,6 +101,7 @@ const ids = [
     ];
 */
 void updateScore() {
+  score = "";
   score += fiveDice->basicHand(1) + ",";
   score += fiveDice->basicHand(2) + ",";
   score += fiveDice->basicHand(3) + ",";
@@ -173,7 +174,7 @@ void setup() {
 
   // Cloud Variables + Functions
   Particle.variable("RollsLeft", rollsLeft);
-  Particle.variable("RollData", score);
+  Particle.variable("roll", score);
 
   //seeding random number generation
   srand(millis());
