@@ -60,7 +60,7 @@ void loop() {
 
 
   lcd.setCursor(0,0);
-  lcd.println("Rolls: 1 2 3 4 5");
+  lcd.println("Rolls: 1|2|3|4|5");
   lcd.setCursor(0, 1);
   lcd.println("Rolls Left: ");
   lcd.println(rollsLeft);
