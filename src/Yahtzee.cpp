@@ -50,11 +50,11 @@ using namespace std;
 
 // Variables
 diceSet* fiveDice = new diceSet();
-int diceRoll1 = 0;
-int diceRoll2 = 0;
-int diceRoll3 = 0;
-int diceRoll4 = 0;
-int diceRoll5 = 0;
+int diceRoll1 = fiveDice->getDiceValue(1);
+int diceRoll2 = fiveDice->getDiceValue(2);
+int diceRoll3 = fiveDice->getDiceValue(3);
+int diceRoll4 = fiveDice->getDiceValue(4);
+int diceRoll5 = fiveDice->getDiceValue(5);
 int rollsLeft = fiveDice->getRolls();
 int score = 0;
 LiquidCrystal lcd(
