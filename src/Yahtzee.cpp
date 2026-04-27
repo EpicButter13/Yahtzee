@@ -130,7 +130,7 @@ void ifButtonsPressed() {
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
     updateScore();
-    delay(250);
+    delay(1000);
   }
 
   if (greenButtonValue) {
