@@ -90,7 +90,8 @@ void ifButtonsPressed() {
   }
 
   if (greenButtonValue) {
-    
+    delete fiveDice;
+    fiveDice = new diceSet;
   }
 
 }

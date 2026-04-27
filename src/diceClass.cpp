@@ -57,6 +57,18 @@ class diceSet
     {
         return rolls;
     }
+
+    int getDiceValue(int dieNum)
+    {
+        if (1 <= dieNum && dieNum <= NUM_DICE)
+        {
+            return hand[dieNum - 1];
+        }
+        else
+        {
+            return 0;
+        }
+    }
  /*   
     void print()
     {
