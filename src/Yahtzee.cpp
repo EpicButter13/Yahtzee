@@ -38,7 +38,7 @@ using namespace std;
 // BUZZER
 #define BUZZER_PIN D6
 // BUTTON
-#define BLUE_PUSH_BUTTON_PIN D9
+#define YELLOW_PUSH_BUTTON_PIN D9
 #define GREEN_PUSH_BUTTON_PIN D10
 // SWITCH
 #define SWITCH_ONE_PIN D1
@@ -135,14 +135,14 @@ void updateScore() {
 
 void ifButtonsPressed() {
 
-  boolean blueButtonValue = digitalRead(BLUE_PUSH_BUTTON_PIN);
+  boolean yellowButtonValue = digitalRead(YELLOW_PUSH_BUTTON_PIN);
   boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
 
   currentTime = millis();
   lastState = currentState;
-  currentState = digitalRead(BLUE_PUSH_BUTTON_PIN);
+  currentState = digitalRead(YELLOW_PUSH_BUTTON_PIN);
 
-  if (blueButtonValue && fiveDice->getRolls() != 0 && (lastState == FALSE && currentState == TRUE)) {
+  if ((lastState == FALSE && currentState == TRUE)) {
     Serial.println("PRESSED!!?!?!??!");
     lastTimeButtonPressed = millis();
     fiveDice->roll();
@@ -206,7 +206,7 @@ void setup() {
   lcd.begin(16, 2);
 
   // Pin Modes
-  pinMode(BLUE_PUSH_BUTTON_PIN, INPUT_PULLDOWN);
+  pinMode(YELLOW_PUSH_BUTTON_PIN, INPUT_PULLDOWN);
   pinMode(GREEN_PUSH_BUTTON_PIN, INPUT);
   pinMode(BUZZER_PIN, OUTPUT);
   pinMode(SWITCH_ONE_PIN, INPUT_PULLDOWN);
@@ -230,8 +230,9 @@ void loop() {
   // Print LCD
   updateLCD();
 
+  //delay(1000);
   Serial.print("Is Button Clicked: ");
-  Serial.println(digitalRead(BLUE_PUSH_BUTTON_PIN));
+  Serial.println(digitalRead(YELLOW_PUSH_BUTTON_PIN));
   Serial.print("Switch 1: ");
   Serial.println(digitalRead(SWITCH_ONE_PIN));
   Serial.print("Switch 2: ");
