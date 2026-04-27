@@ -56,7 +56,7 @@ int diceRoll3 = fiveDice->getDiceValue(3);
 int diceRoll4 = fiveDice->getDiceValue(4);
 int diceRoll5 = fiveDice->getDiceValue(5);
 int rollsLeft = fiveDice->getRolls();
-String scoreData;
+String score;
 LiquidCrystal lcd(
   LCD_RS_PIN,
   LCD_E_PIN,
@@ -120,7 +120,7 @@ void ifButtonsPressed() {
   boolean blueButtonValue = digitalRead(BLUE_PUSH_BUTTON_PIN);
   boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
 
-  if (blueButtonValue) {
+  if (blueButtonValue && fiveDice->getRolls() != 0) {
     fiveDice->roll();
     rollsLeft = fiveDice->getRolls();
     diceRoll1 = fiveDice->getDiceValue(1);
