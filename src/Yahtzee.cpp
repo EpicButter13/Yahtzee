@@ -36,7 +36,7 @@ using namespace std;
 #define LCD_D6_PIN A2
 #define LCD_D7_PIN A5
 // BUZZER
-#define BUZZER_PIN D7
+#define BUZZER_PIN D6
 // BUTTON
 #define BLUE_PUSH_BUTTON_PIN D0
 #define GREEN_PUSH_BUTTON_PIN D10
@@ -143,7 +143,8 @@ void ifButtonsPressed() {
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
     updateScore();
-    delay(1000);
+    tone(BUZZER_PIN, 440, 500);
+    delay(500);
   }
 
   if (greenButtonValue) {
