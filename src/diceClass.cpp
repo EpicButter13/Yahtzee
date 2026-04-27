@@ -43,14 +43,17 @@ class diceSet
     
     void roll()
     {
-        for (int i = 0; i < NUM_DICE; i++)
+        if (rolls > 0)
         {
-            if (!selected[i])
+            for (int i = 0; i < NUM_DICE; i++)
             {
-                hand[i] = die.roll();
+                if (!selected[i])
+                {
+                    hand[i] = die.roll();
+                }
             }
-        }
         rolls--;
+        }
     }
 
     int getRolls()
