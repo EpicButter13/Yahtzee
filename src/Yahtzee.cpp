@@ -98,6 +98,12 @@ void ifButtonsPressed() {
   if (greenButtonValue) {
     delete fiveDice;
     fiveDice = new diceSet;
+    rollsLeft = fiveDice->getRolls();
+    diceRoll1 = fiveDice->getDiceValue(1);
+    diceRoll2 = fiveDice->getDiceValue(2);
+    diceRoll3 = fiveDice->getDiceValue(3);
+    diceRoll4 = fiveDice->getDiceValue(4);
+    diceRoll5 = fiveDice->getDiceValue(5);
   }
 
 }
