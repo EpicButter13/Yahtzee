@@ -119,6 +119,8 @@ void setup() {
   Particle.variable("RollsLeft", rollsLeft);
   Particle.variable("Score", score);
 
+  //seeding random number generation
+  srand(time(0));
 }
 
 // loop() runs over and over again, as quickly as it can execute.
