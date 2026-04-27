@@ -59,3 +59,27 @@ updateFromCloud();
 
 // Poll every 2 seconds
 setInterval(updateFromCloud, 2000);
+
+
+
+
+// Function to add functionality to the buttons that select which dice to reroll
+function rollThis(die)
+{
+  // Send a boolean data type, as this function determines whether a die is selected or not and sends that data back to the microcontroller
+  // Change the color of the selected button to clearly show that the player successfully selected a die
+  //console.log(document.getElementById(die.id));
+  //console.log("THIS IS THE DIE ID: " + die.id);
+  if(die.style.backgroundColor != "green") // Color to change to deselect die
+  {
+    die.style.backgroundColor = "green";
+    return true;
+  }
+  else // Color to change to select the die
+  {
+    die.style.backgroundColor = "gray";
+    return false;
+  }
+
+  // Note: Will probably need to utilize Particle functions to send/change data for cloud variables from the webPage
+}

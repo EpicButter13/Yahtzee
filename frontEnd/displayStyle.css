@@ -35,3 +35,37 @@ h2
     margin-left: auto;
     margin-right: auto;
 }
+
+#scoreTable
+{
+    display: block;      
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Define the custom class */
+.btn-gray-standard 
+{
+  background-color: #808080; /* Neutral gray */
+  color: white;              /* White text for contrast */
+  padding: 30px 30px;        /* Reasonable, clickable size */
+  border: none;              /* Removes default browser styling */
+  border-radius: 4px;        /* Slightly rounded corners */
+  font-size: 16px;           /* Standard readable text size */
+  cursor: pointer;           /* Shows the hand icon on hover */
+}
+
+/* Optional: Add a slight hover effect to make it feel interactive */
+.btn-gray-standard:hover 
+{
+  background-color: #676767; 
+}
+
+
+#diceSelectorPanel
+{
+    display: flex;         /* Puts buttons on one line */
+    gap: 30px;            /* Adds space between the buttons */
+    justify-content: flex-start; /* Aligns them to the left (default) */
+}
