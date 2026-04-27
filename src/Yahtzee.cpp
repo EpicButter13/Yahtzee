@@ -22,10 +22,10 @@ SerialLogHandler logHandler(LOG_LEVEL_INFO);
 // Libraries
 #include <iostream>
 #include <LiquidCrystal.h>
+#include <cstdlib>
 #include <ctime>
 #include <diceClass.cpp>
 using namespace std;
-
 
 // Pins
 // LCD
@@ -64,6 +64,7 @@ LiquidCrystal lcd(
   LCD_D6_PIN,
   LCD_D7_PIN
 );
+//diceSet fiveDice;
 
 // Functions
 // int convertStringRollsToInts(String diceRolls) {
@@ -121,10 +122,10 @@ void setup() {
   Particle.variable("Score", score);
 
   //seeding random number generation
-  srand(time(0));
+  srand(millis());
 
   // Make Dice
-  //diceSet fiveDice;
+  
 }
 
 // loop() runs over and over again, as quickly as it can execute.
