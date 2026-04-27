@@ -22,6 +22,7 @@ SerialLogHandler logHandler(LOG_LEVEL_INFO);
 // Libraries
 #include <iostream>
 #include <LiquidCrystal.h>
+#include <ctime>
 #include <diceClass.cpp>
 using namespace std;
 
@@ -54,7 +55,7 @@ int diceRoll3 = 0;
 int diceRoll4 = 0;
 int diceRoll5 = 0;
 int rollsLeft = 3;
-int score;
+int score = 0;
 LiquidCrystal lcd(
   LCD_RS_PIN,
   LCD_E_PIN,
@@ -121,6 +122,9 @@ void setup() {
 
   //seeding random number generation
   srand(time(0));
+
+  // Make Dice
+  //diceSet fiveDice;
 }
 
 // loop() runs over and over again, as quickly as it can execute.
