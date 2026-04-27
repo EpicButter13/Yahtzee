@@ -67,6 +67,8 @@ LiquidCrystal lcd(
 );
 unsigned long currentTime = millis();
 unsigned long lastTimeButtonPressed = millis();
+boolean currentState = FALSE;
+boolean lastState;
 
 // Functions
 // int convertStringRollsToInts(String diceRolls) {
@@ -137,8 +139,10 @@ void ifButtonsPressed() {
   boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
 
   currentTime = millis();
+  lastState = currentState;
+  currentState = digitalRead(BLUE_PUSH_BUTTON_PIN);
 
-  if (blueButtonValue && fiveDice->getRolls() != 0 && (currentTime - lastTimeButtonPressed >= 500)) {
+  if (blueButtonValue && fiveDice->getRolls() != 0 && (lastState == FALSE && currentState == TRUE)) {
     Serial.println("PRESSED!!?!?!??!");
     lastTimeButtonPressed = millis();
     fiveDice->roll();
