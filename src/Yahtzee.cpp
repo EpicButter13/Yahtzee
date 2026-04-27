@@ -38,7 +38,7 @@ using namespace std;
 // BUZZER
 #define BUZZER_PIN D6
 // BUTTON
-#define BLUE_PUSH_BUTTON_PIN D0
+#define BLUE_PUSH_BUTTON_PIN D9
 #define GREEN_PUSH_BUTTON_PIN D10
 // SWITCH
 #define SWITCH_ONE_PIN D1
@@ -65,6 +65,8 @@ LiquidCrystal lcd(
   LCD_D6_PIN,
   LCD_D7_PIN
 );
+unsigned long currentTime = millis();
+unsigned long lastTimeButtonPressed = millis();
 
 // Functions
 // int convertStringRollsToInts(String diceRolls) {
@@ -134,7 +136,11 @@ void ifButtonsPressed() {
   boolean blueButtonValue = digitalRead(BLUE_PUSH_BUTTON_PIN);
   boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
 
-  if (blueButtonValue && fiveDice->getRolls() != 0) {
+  currentTime = millis();
+
+  if (blueButtonValue && fiveDice->getRolls() != 0 && (currentTime - lastTimeButtonPressed >= 500)) {
+    Serial.println("PRESSED!!?!?!??!");
+    lastTimeButtonPressed = millis();
     fiveDice->roll();
     rollsLeft = fiveDice->getRolls();
     diceRoll1 = fiveDice->getDiceValue(1);
@@ -144,7 +150,6 @@ void ifButtonsPressed() {
     diceRoll5 = fiveDice->getDiceValue(5);
     updateScore();
     tone(BUZZER_PIN, 440, 500);
-    delay(500);
   }
 
   if (greenButtonValue) {
@@ -197,7 +202,7 @@ void setup() {
   lcd.begin(16, 2);
 
   // Pin Modes
-  pinMode(BLUE_PUSH_BUTTON_PIN, INPUT);
+  pinMode(BLUE_PUSH_BUTTON_PIN, INPUT_PULLDOWN);
   pinMode(GREEN_PUSH_BUTTON_PIN, INPUT);
   pinMode(BUZZER_PIN, OUTPUT);
   pinMode(SWITCH_ONE_PIN, INPUT_PULLDOWN);
@@ -206,7 +211,7 @@ void setup() {
   pinMode(SWITCH_FOUR_PIN, INPUT_PULLDOWN);
   pinMode(SWITCH_FIVE_PIN, INPUT_PULLDOWN);
   // Cloud Variables + Functions
-  Particle.variable("RollsLeft", rollsLeft);
+  //Particle.variable("RollsLeft", rollsLeft);
   Particle.variable("roll", score);
 
   //seeding random number generation
