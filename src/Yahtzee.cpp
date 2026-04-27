@@ -56,7 +56,7 @@ int diceRoll3 = fiveDice->getDiceValue(3);
 int diceRoll4 = fiveDice->getDiceValue(4);
 int diceRoll5 = fiveDice->getDiceValue(5);
 int rollsLeft = fiveDice->getRolls();
-String score;
+String scoreData;
 LiquidCrystal lcd(
   LCD_RS_PIN,
   LCD_E_PIN,
