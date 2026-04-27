@@ -1,17 +1,37 @@
-/* This is a single-line comment */
-
-h1 
-{
-    color: rgb(0, 128, 47);
-}
-
-h2
-{
-    color: rgb(0, 128, 47);
-}
-
+/* This file is purely for making the webpage asthetically pleasing, no functionality, as that is what CSS is intended for */
+/* CSS QUICK REFERENCE LINK: https://cssreference.io/ */
 body
 {
     background-color: rgba(220, 73, 24, 0.311); 
 }
 
+h1 
+{
+    display: block; /* Ensures it takes up the full width */
+    text-align: center; /* Centers the text within that width */
+    color: rgb(0, 128, 47);
+}
+
+h2
+{
+    display: block;
+    text-align: center;
+    color: rgb(0, 128, 47);
+}
+
+/* this will customize the display of the roll data */
+#current_roll
+{
+    color: rgb(236, 10, 10);
+    font-size: 50px;
+    font-weight: bold;
+    display: block;      
+    text-align: center; 
+}
+
+#combosImage
+{
+    display: block;      
+    margin-left: auto;
+    margin-right: auto;
+}
