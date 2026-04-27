@@ -169,6 +169,26 @@ void switchUpdate() {
   fiveDice->select(5, digitalRead(SWITCH_FIVE_PIN));
 }
 
+
+void updateLCD() {
+  // Print LCD
+  lcd.setCursor(0,0);
+  lcd.print("Dice: ");
+  lcd.print(diceRoll1);
+  lcd.print("|");
+  lcd.print(diceRoll2);
+  lcd.print("|");
+  lcd.print(diceRoll3);
+  lcd.print("|");
+  lcd.print(diceRoll4);
+  lcd.print("|");
+  lcd.print(diceRoll5);
+  lcd.print("|");
+  lcd.setCursor(0, 1);
+  lcd.print("Rolls Left: ");
+  lcd.print(rollsLeft);
+}
+
 // setup() runs once, when the device is first turned on
 void setup() {
   // Begin Instruments
@@ -194,25 +214,6 @@ void setup() {
 
 }
 
-void updateLCD() {
-  // Print LCD
-  lcd.setCursor(0,0);
-  lcd.print("Dice: ");
-  lcd.print(diceRoll1);
-  lcd.print("|");
-  lcd.print(diceRoll2);
-  lcd.print("|");
-  lcd.print(diceRoll3);
-  lcd.print("|");
-  lcd.print(diceRoll4);
-  lcd.print("|");
-  lcd.print(diceRoll5);
-  lcd.print("|");
-  lcd.setCursor(0, 1);
-  lcd.print("Rolls Left: ");
-  lcd.print(rollsLeft);
-}
-
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
 
@@ -232,8 +233,10 @@ void loop() {
   Serial.println(digitalRead(SWITCH_FOUR_PIN));
   Serial.print("Switch 5: ");
   Serial.println(digitalRead(SWITCH_FIVE_PIN));
-  Serial.println("Score string: ");
+  Serial.print("Score string: ");
   Serial.println(score);
+  Serial.print("Get Select: ");
+  Serial.println(fiveDice->getSelect());
 
   // Check the buttons
   ifButtonsPressed();
