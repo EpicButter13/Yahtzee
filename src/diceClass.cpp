@@ -111,7 +111,7 @@ class diceSet
     {
         if (1 <= dieNum && dieNum <= NUM_DICE)
         {
-            selected[dieNum] = status;
+            selected[dieNum - 1] = status;
         }
     }
 
