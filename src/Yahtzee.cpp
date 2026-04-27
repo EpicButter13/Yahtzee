@@ -236,8 +236,10 @@ void loop() {
   Serial.print("Score string: ");
   Serial.println(score);
   Serial.print("Get Select: ");
-  Serial.println(fiveDice->getSelect());
-
+  for (int i = 0; i < 5; i++)
+  {
+    Serial.println(fiveDice->getSelect(i));
+  }
   // Check the buttons
   ifButtonsPressed();
   Particle.syncTime();

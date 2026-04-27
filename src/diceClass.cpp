@@ -115,14 +115,9 @@ class diceSet
         }
     }
 
-    String getSelect()
+    int getSelect(int index)
     {
-        String s = "";
-        for (int i = 0; i < NUM_DICE; i++)
-        {
-            s += String(selected[i]);
-        }
-        return s;
+       return selected[index];
     }
 
     int handSum()
