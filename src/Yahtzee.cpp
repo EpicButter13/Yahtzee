@@ -128,7 +128,7 @@ void ifButtonsPressed() {
     diceRoll3 = fiveDice->getDiceValue(3);
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
-    score = "";
+    updateScore();
     delay(250);
   }
 
@@ -141,7 +141,7 @@ void ifButtonsPressed() {
     diceRoll3 = fiveDice->getDiceValue(3);
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
-    updateScore();
+    score = "";
   }
 
 }
