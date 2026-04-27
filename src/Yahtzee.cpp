@@ -180,5 +180,6 @@ void loop() {
 
   // Check the buttons
   ifButtonsPressed();
+  switchUpdate();
 
 }
