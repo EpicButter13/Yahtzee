@@ -108,6 +108,14 @@ void ifButtonsPressed() {
 
 }
 
+void switchUpdate() {
+  fiveDice->select(1, digitalRead(SWITCH_ONE_PIN));
+  fiveDice->select(2, digitalRead(SWITCH_TWO_PIN));
+  fiveDice->select(3, digitalRead(SWITCH_THREE_PIN));
+  fiveDice->select(4, digitalRead(SWITCH_FOUR_PIN));
+  fiveDice->select(5, digitalRead(SWITCH_FIVE_PIN));
+}
+
 // setup() runs once, when the device is first turned on
 void setup() {
   // Begin Instruments

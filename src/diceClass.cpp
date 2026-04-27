@@ -107,6 +107,14 @@ class diceSet
         }
     }
 
+    void select(int dieNum, bool status)
+    {
+        if (1 <= dieNum && dieNum <= NUM_DICE)
+        {
+            selected[dieNum] = status;
+        }
+    }
+
     int handSum()
     {
         int sum = 0;
