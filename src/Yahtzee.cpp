@@ -218,7 +218,8 @@ void loop() {
   Serial.println(digitalRead(SWITCH_FOUR_PIN));
   Serial.print("Switch 5: ");
   Serial.println(digitalRead(SWITCH_FIVE_PIN));
-
+  Serial.println("Score string: ");
+  Serial.println(score);
 
   // Check the buttons
   ifButtonsPressed();
