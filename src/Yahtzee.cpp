@@ -56,7 +56,7 @@ int diceRoll3 = fiveDice->getDiceValue(3);
 int diceRoll4 = fiveDice->getDiceValue(4);
 int diceRoll5 = fiveDice->getDiceValue(5);
 int rollsLeft = fiveDice->getRolls();
-int score = 0;
+string scoreData;
 LiquidCrystal lcd(
   LCD_RS_PIN,
   LCD_E_PIN,
@@ -135,13 +135,8 @@ void setup() {
   pinMode(SWITCH_FIVE_PIN, INPUT);
 
   // Cloud Variables + Functions
-  Particle.variable("DiceRoll1", diceRoll1);
-  Particle.variable("DiceRoll2", diceRoll2);
-  Particle.variable("DiceRoll3", diceRoll3);
-  Particle.variable("DiceRoll4", diceRoll4);
-  Particle.variable("DiceRoll5", diceRoll5);
   Particle.variable("RollsLeft", rollsLeft);
-  Particle.variable("Score", score);
+  Particle.variable("RollData", scoreData);
 
   //seeding random number generation
   srand(millis());

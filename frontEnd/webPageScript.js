@@ -5,6 +5,10 @@ let baseURL = "https://api.particle.io/v1/devices/";
 let cloudVariableName_RollData = 'roll';
 
 
+// ADD: initialize Particle API
+const particle = new Particle();
+
+
 // In the loop function, there will likely be a conditional to decide whether or not to send the current roll data (string data) to the cloud
 // ,so the only thing that needs to be handled here is fetching that data from the cloud and displaying that on the webpage
 //let rollString = "5 2 3 1 8";
@@ -12,13 +16,43 @@ let cloudVariableName_RollData = 'roll';
 
 // Establish an algorithim to fetch the string data held in the cloud variable that represents "rollString"
 
-// This (what to use when working with Particle Device Cloud API) can be found in https://docs.particle.io/reference/cloud-apis/javascript/
-particle.getVariable({ deviceId: identificationDetails, name: cloudVariableName_RollData, auth: accessToken }).then(function(data) {
+// (FIXED: correct parsing of returned object)
+particle.getVariable({
+  deviceId: identificationDetails,
+  name: cloudVariableName_RollData,
+  auth: accessToken
+}).then(function(data) {
+
   console.log('Device variable retrieved successfully:', data);
-  document.getElementById("current_roll").innerHTML = data;
+
+  // original intent preserved, but corrected value extraction
+  let rollString = data.body.result;
+
+  document.getElementById("current_roll").innerHTML = rollString;
+
+  // OPTIONAL ADD: if you later want to update the score table too
+  // updateScores(rollString);
+
 }, function(err) {
   console.log('An error occurred while getting attrs:', err);
 });
+
+
+setInterval(function () {
+  particle.getVariable({
+    deviceId: identificationDetails,
+    name: cloudVariableName_RollData,
+    auth: accessToken
+  }).then(function(data) {
+
+    let rollString = data.body.result;
+    document.getElementById("current_roll").innerHTML = rollString;
+
+    // OPTIONAL:
+    // updateScores(rollString);
+
+  });
+}, 2000);
 
 
 

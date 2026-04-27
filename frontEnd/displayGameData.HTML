@@ -13,13 +13,79 @@
     
     <body>
         <!-- Add a label to indicate where the dice roll numbers are displayed -->
-        <h1> YOUR CURRENT ROLL: </h1>
+        <h1> YAHTZEE! </h1>
         <span id = "current_roll"></span>
+
+
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <table id="scoreTable" border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Hand</th>
+                <th>Score If Played</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ones</td>
+                <td id="ones_score">--</td>
+            </tr>
+            <tr>
+                <td>Twos</td>
+                <td id="twos_score">--</td>
+            </tr>
+            <tr>
+                <td>Threes</td>
+                <td id="threes_score">--</td>
+            </tr>
+            <tr>
+                <td>Fours</td>
+                <td id="fours_score">--</td>
+            </tr>
+            <tr>
+                <td>Fives</td>
+                <td id="fives_score">--</td>
+            </tr>
+            <tr>
+                <td>Sixes</td>
+                <td id="sixes_score">--</td>
+            </tr>
+            <tr>
+                <td>Three of a Kind</td>
+                <td id="three_kind_score">--</td>
+            </tr>
+            <tr>
+                <td>Four of a Kind</td>
+                <td id="four_kind_score">--</td>
+            </tr>
+            <tr>
+                <td>Full House</td>
+                <td id="full_house_score">--</td>
+            </tr>
+            <tr>
+                <td>Small Straight</td>
+                <td id="small_straight_score">--</td>
+            </tr>
+            <tr>
+                <td>Large Straight</td>
+                <td id="large_straight_score">--</td>
+            </tr>
+            <tr>
+                <td>Yahtzee</td>
+                <td id="yahtzee_score">--</td>
+            </tr>
+            <tr>
+                <td>Chance</td>
+                <td id="chance_score">--</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
         <br>
         <br>
         <br>
-        <h2> COMBINATIONS TO SELECT FROM </h2>
+        <h2> RULES: </h2>
         <img id="combosImage" loading="lazy" src="combinations.png" alt="all combinations one can fulfill" width="500" height="1000">
 
 
