@@ -145,14 +145,13 @@ void setup() {
   //seeding random number generation
   srand(millis());
 
-  // Make Dice
   
 }
 
 void updateLCD() {
   // Print LCD
   lcd.setCursor(0,0);
-  lcd.print("Rolls: ");
+  lcd.print("Dice: ");
   lcd.print(diceRoll1);
   lcd.print("|");
   lcd.print(diceRoll2);
