@@ -93,6 +93,7 @@ void ifButtonsPressed() {
     diceRoll3 = fiveDice->getDiceValue(3);
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
+    delay(250);
   }
 
   if (greenButtonValue) {
@@ -175,7 +176,6 @@ void loop() {
   updateLCD();
 
   Serial.println(digitalRead(BLUE_PUSH_BUTTON_PIN));
-  delay(1000);
 
   // Check the buttons
   ifButtonsPressed();
