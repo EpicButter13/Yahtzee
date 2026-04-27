@@ -118,6 +118,8 @@ void updateScore() {
   score += ",";
   score += String(fiveDice->fourOfAKind()); 
   score += ",";
+  score += String(fiveDice->fullHouse()); 
+  score += ",";
   score += String(fiveDice->smallStraight()); 
   score += ",";
   score += String(fiveDice->largeStraight()); 
