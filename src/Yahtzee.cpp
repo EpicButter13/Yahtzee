@@ -102,18 +102,29 @@ const ids = [
 */
 void updateScore() {
   score = "";
-  score += fiveDice->basicHand(1) + ",";
-  score += fiveDice->basicHand(2) + ",";
-  score += fiveDice->basicHand(3) + ",";
-  score += fiveDice->basicHand(4) + ",";
-  score += fiveDice->basicHand(5) + ",";
-  score += fiveDice->basicHand(6) + ",";
-  score += fiveDice->threeOfAKind() + ",";
-  score += fiveDice->fourOfAKind() + ",";
-  score += fiveDice->smallStraight() + ",";
-  score += fiveDice->largeStraight() + ",";
-  score += fiveDice->yahtzee() + ",";
-  score += fiveDice->handSum();
+  score += String(fiveDice->basicHand(1)); 
+  score += ",";
+  score += String(fiveDice->basicHand(2)); 
+  score += ",";
+  score += String(fiveDice->basicHand(3)); 
+  score += ",";
+  score += String(fiveDice->basicHand(4)); 
+  score += ",";
+  score += String(fiveDice->basicHand(5)); 
+  score += ",";
+  score += String(fiveDice->basicHand(6)); 
+  score += ",";
+  score += String(fiveDice->threeOfAKind()); 
+  score += ",";
+  score += String(fiveDice->fourOfAKind()); 
+  score += ",";
+  score += String(fiveDice->smallStraight()); 
+  score += ",";
+  score += String(fiveDice->largeStraight()); 
+  score += ",";
+  score += String(fiveDice->yahtzee()); 
+  score += ",";
+  score += String(fiveDice->handSum());
 }
 
 void ifButtonsPressed() {
