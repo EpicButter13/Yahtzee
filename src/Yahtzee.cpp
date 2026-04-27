@@ -86,7 +86,8 @@ void ifButtonsPressed() {
   boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
 
   if (blueButtonValue) {
-
+    fiveDice->roll();
+    
   }
 
   if (greenButtonValue) {
