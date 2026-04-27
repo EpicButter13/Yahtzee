@@ -128,11 +128,11 @@ void setup() {
   pinMode(BLUE_PUSH_BUTTON_PIN, INPUT);
   pinMode(GREEN_PUSH_BUTTON_PIN, INPUT);
   pinMode(BUZZER_PIN, OUTPUT);
-  pinMode(SWITCH_ONE_PIN, INPUT);
-  pinMode(SWITCH_TWO_PIN, INPUT);
-  pinMode(SWITCH_THREE_PIN, INPUT);
-  pinMode(SWITCH_FOUR_PIN, INPUT);
-  pinMode(SWITCH_FIVE_PIN, INPUT);
+  pinMode(SWITCH_ONE_PIN, INPUT_PULLUP);
+  pinMode(SWITCH_TWO_PIN, INPUT_PULLUP);
+  pinMode(SWITCH_THREE_PIN, INPUT_PULLUP);
+  pinMode(SWITCH_FOUR_PIN, INPUT_PULLUP);
+  pinMode(SWITCH_FIVE_PIN, INPUT_PULLUP);
 
   // Cloud Variables + Functions
   Particle.variable("RollsLeft", rollsLeft);
@@ -141,7 +141,6 @@ void setup() {
   //seeding random number generation
   srand(millis());
 
-  
 }
 
 void updateLCD() {
@@ -170,7 +169,19 @@ void loop() {
   // Print LCD
   updateLCD();
 
+  Serial.print("Is Button Clicked: ");
   Serial.println(digitalRead(BLUE_PUSH_BUTTON_PIN));
+  Serial.print("Switch 1: ");
+  Serial.println(digitalRead(SWITCH_ONE_PIN));
+  Serial.print("Switch 2: ");
+  Serial.println(digitalRead(SWITCH_TWO_PIN));
+  Serial.print("Switch 3: ");
+  Serial.println(digitalRead(SWITCH_THREE_PIN));
+  Serial.print("Switch 4: ");
+  Serial.println(digitalRead(SWITCH_FOUR_PIN));
+  Serial.print("Switch 5: ");
+  Serial.println(digitalRead(SWITCH_FIVE_PIN));
+
 
   // Check the buttons
   ifButtonsPressed();
