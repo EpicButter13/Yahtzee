@@ -53,6 +53,11 @@ class diceSet
         }
         rolls--;
     }
+
+    int getRolls()
+    {
+        return rolls;
+    }
     
     void print()
     {
