@@ -49,12 +49,13 @@ using namespace std;
 
 
 // Variables
+diceSet* fiveDice = new diceSet();
 int diceRoll1 = 0;
 int diceRoll2 = 0;
 int diceRoll3 = 0;
 int diceRoll4 = 0;
 int diceRoll5 = 0;
-int rollsLeft = 3;
+int rollsLeft = fiveDice->getRolls();
 int score = 0;
 LiquidCrystal lcd(
   LCD_RS_PIN,
@@ -64,7 +65,6 @@ LiquidCrystal lcd(
   LCD_D6_PIN,
   LCD_D7_PIN
 );
-//diceSet fiveDice;
 
 // Functions
 // int convertStringRollsToInts(String diceRolls) {
@@ -129,18 +129,31 @@ void setup() {
   
 }
 
+void updateLCD() {
+  // Print LCD
+  lcd.setCursor(0,0);
+  lcd.print("Rolls: ");
+  lcd.print(diceRoll1);
+  lcd.print("|");
+  lcd.print(diceRoll2);
+  lcd.print("|");
+  lcd.print(diceRoll3);
+  lcd.print("|");
+  lcd.print(diceRoll4);
+  lcd.print("|");
+  lcd.print(diceRoll5);
+  lcd.print("|");
+  lcd.setCursor(0, 1);
+  lcd.print("Rolls Left: ");
+  lcd.print(rollsLeft);
+}
+
 // loop() runs over and over again, as quickly as it can execute.
 void loop() {
 
 
-
-  lcd.setCursor(0,0);
-  lcd.println("Rolls: 1|2|3|4|5");
-  lcd.setCursor(0, 1);
-  lcd.println("Rolls Left: ");
-  lcd.println(rollsLeft);
-
-
+  // Print LCD
+  updateLCD();
 
   ifButtonsPressed();
 
