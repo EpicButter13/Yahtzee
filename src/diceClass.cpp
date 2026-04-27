@@ -99,11 +99,11 @@ class diceSet
         
     }
 */
-    void select(int index)
+    void select(int dieNum)
     {
-        if (0 <= index && index < NUM_DICE)
+        if (1 <= dieNum && dieNum <= NUM_DICE)
         {
-            selected[index] = !selected[index];
+            selected[dieNum] = !selected[dieNum];
         }
     }
 
