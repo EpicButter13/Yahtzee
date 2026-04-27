@@ -70,7 +70,7 @@ LiquidCrystal lcd(
 // int convertStringRollsToInts(String diceRolls) {
 //   return 0;
 // };
-
+/*
 int* convertStringtoArray(String diceRolls) {
   int* array = new int[5];
   for (int i = 0; i < 5; i++) {
@@ -78,7 +78,10 @@ int* convertStringtoArray(String diceRolls) {
     array[i] = roll.toInt();
   }
   return array;
+ 
 }
+*/
+
 /* From the web page javascript code; to see order in which scores are interpreted by the webpage
 must packaged score data accordingly
 const ids = [
@@ -109,7 +112,7 @@ void updateScore() {
   score += fiveDice->smallStraight() + ",";
   score += fiveDice->largeStraight() + ",";
   score += fiveDice->yahtzee() + ",";
-  score += fiveDice->handSum() + ",";
+  score += fiveDice->handSum();
 }
 
 void ifButtonsPressed() {
@@ -125,7 +128,7 @@ void ifButtonsPressed() {
     diceRoll3 = fiveDice->getDiceValue(3);
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
-    updateScore();
+    score = NULL;
     delay(250);
   }
 
