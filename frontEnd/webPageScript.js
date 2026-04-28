@@ -3,6 +3,9 @@ let accessToken = "82610000acc77661b40a96934329224927716751";
 let cloudVariableName_RollData = "roll";
 
 const particle = new Particle();
+const lockInSound = new Audio('lockSFX.mp3');
+//const fartSound = new Audio('unlockSFX.mp3');
+const unlockSound = new Audio('unlockSFX2.mp3');
 
 function updateScores(scoreString) {
   if (!scoreString) return;
@@ -86,6 +89,7 @@ function rollThis(die, index)
         console.error('Error calling function:', err);
     });
     die.style.backgroundColor = "green";
+    lockInSound.play();
     return true;
   }
   else // Color to change to select the die
@@ -104,6 +108,7 @@ function rollThis(die, index)
         console.error('Error calling function:', err);
     });
     die.style.backgroundColor = "gray";
+    unlockSound.play(); 
     return false;
   }
 
