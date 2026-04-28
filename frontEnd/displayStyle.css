@@ -10,6 +10,44 @@ body
     background-blend-mode: overlay; /* Blends the white into the colors */
 }
 
+#allContent
+{
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+}
+
+#scoreTableAndMuteButton
+{
+  display: flex;
+  justify-content: center; /* Centers the table + button group on screen */
+  align-items: center;     /* Aligns the button with the vertical middle of the table */
+  gap: 20px;               /* Space between table and button */
+  width: 100%;             /* Ensures container spans the full screen width */
+}
+
+#muteControlSoundtrackButton
+{
+  background-color: rgb(236, 10, 10);
+  position: absolute;
+  transform: translateX(calc(125%)); /* Manually push it out from the center */
+
+  padding: 30px 50px; 
+
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+#muteControlSoundtrackButton:hover /* Hover state */
+{
+  transform: translateX(125%) scale(1.1);
+}
+#muteControlSoundtrackButton:active /* Click/Active state */
+{
+  transform: translateX(125%) scale(1.0);
+}
+
 h1 
 {
     display: block; /* Ensures it takes up the full width */
@@ -79,7 +117,8 @@ h2
 
 
 /* THIS ANIMATION CLASS IS SO TUFF FOR THE BUTTONS YO */
-.btn-grow {
+.btn-grow 
+{
   padding: 30px 30px;
   background-color: #676767;
   color: white;
@@ -91,11 +130,13 @@ h2
 }
 
 /* 2. Gradually enlarges on hover */
-.btn-grow:hover {
+.btn-grow:hover 
+{
   transform: scale(1.1);
 }
 
 /* 3. Returns to original size (1.0) when clicked/held */
-.btn-grow:active {
+.btn-grow:active 
+{
   transform: scale(1.0);
 }

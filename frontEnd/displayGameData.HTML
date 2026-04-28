@@ -13,33 +13,41 @@
 
 <body>
 
-<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+<div id = "allContent">
 
     <h1>YAHTZEE!</h1>
 
-    <table id="scoreTable" border="1" cellpadding="10" cellspacing="0">
-        <thead>
-            <tr>
-                <th>Hand</th>
-                <th>Score If Played</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>Ones</td><td id="ones_score">--</td></tr>
-            <tr><td>Twos</td><td id="twos_score">--</td></tr>
-            <tr><td>Threes</td><td id="threes_score">--</td></tr>
-            <tr><td>Fours</td><td id="fours_score">--</td></tr>
-            <tr><td>Fives</td><td id="fives_score">--</td></tr>
-            <tr><td>Sixes</td><td id="sixes_score">--</td></tr>
-            <tr><td>Three of a Kind</td><td id="three_kind_score">--</td></tr>
-            <tr><td>Four of a Kind</td><td id="four_kind_score">--</td></tr>
-            <tr><td>Full House</td><td id="full_house_score">--</td></tr>
-            <tr><td>Small Straight</td><td id="small_straight_score">--</td></tr>
-            <tr><td>Large Straight</td><td id="large_straight_score">--</td></tr>
-            <tr><td>Yahtzee</td><td id="yahtzee_score">--</td></tr>
-            <tr><td>Chance</td><td id="chance_score">--</td></tr>
-        </tbody>
-    </table>
+
+    <div id = "scoreTableAndMuteButton">
+        <table id="scoreTable" border="1" cellpadding="10" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Hand</th>
+                    <th>Score If Played</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Ones</td><td id="ones_score">--</td></tr>
+                <tr><td>Twos</td><td id="twos_score">--</td></tr>
+                <tr><td>Threes</td><td id="threes_score">--</td></tr>
+                <tr><td>Fours</td><td id="fours_score">--</td></tr>
+                <tr><td>Fives</td><td id="fives_score">--</td></tr>
+                <tr><td>Sixes</td><td id="sixes_score">--</td></tr>
+                <tr><td>Three of a Kind</td><td id="three_kind_score">--</td></tr>
+                <tr><td>Four of a Kind</td><td id="four_kind_score">--</td></tr>
+                <tr><td>Full House</td><td id="full_house_score">--</td></tr>
+                <tr><td>Small Straight</td><td id="small_straight_score">--</td></tr>
+                <tr><td>Large Straight</td><td id="large_straight_score">--</td></tr>
+                <tr><td>Yahtzee</td><td id="yahtzee_score">--</td></tr>
+                <tr><td>Chance</td><td id="chance_score">--</td></tr>
+            </tbody>
+        </table>
+
+
+        <audio id="Sky_High" src="gameSoundTrack.mp3" preload="auto" loop></audio>
+        <button id = "muteControlSoundtrackButton" onclick = "toggleMusic()">MUTE/UNMUTE Elektronomia - Sky High</button>
+    </div>
+
 
     <br><br>
     <!-- Implement buttons for the player to select which dice to reroll -->

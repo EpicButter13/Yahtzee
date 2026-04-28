@@ -5,8 +5,29 @@ let cloudVariableName_RollData = "roll";
 const particle = new Particle();
 const lockInSound = new Audio('lockSFX.mp3');
 //const fartSound = new Audio('unlockSFX.mp3');
-const unlockSound = new Audio('unlockSFX2.mp3');
+const unlockSound = new Audio('unlockSFX.mp3');
 
+// Sound functions
+function playSound(sound) // Ensures audio plays no matter how fast button is clicked by duplicating/creating a new sound/instance object and then calling the play() method
+{
+  const s = sound.cloneNode(); // duplicate audio
+  s.play();
+}
+function toggleMusic() 
+{
+  const music = document.getElementById("Sky_High");
+
+  if(music.paused) 
+  {
+    music.play();
+  } 
+  else 
+  {
+    music.pause();
+  }
+}
+
+// Dice reroll selector panel functions
 function updateScores(scoreString) {
   if (!scoreString) return;
 
@@ -89,7 +110,7 @@ function rollThis(die, index)
         console.error('Error calling function:', err);
     });
     die.style.backgroundColor = "green";
-    lockInSound.play();
+    playSound(lockInSound);
     return true;
   }
   else // Color to change to select the die
@@ -108,7 +129,7 @@ function rollThis(die, index)
         console.error('Error calling function:', err);
     });
     die.style.backgroundColor = "gray";
-    unlockSound.play(); 
+    playSound(unlockSound);
     return false;
   }
 
