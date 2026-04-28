@@ -36,16 +36,10 @@ using namespace std;
 #define LCD_D6_PIN A2
 #define LCD_D7_PIN A5
 // BUZZER
-#define BUZZER_PIN D6
+#define BUZZER_PIN D1
 // BUTTON
 #define YELLOW_PUSH_BUTTON_PIN D9
 #define GREEN_PUSH_BUTTON_PIN D10
-// SWITCH
-#define SWITCH_ONE_PIN D1
-#define SWITCH_TWO_PIN D2
-#define SWITCH_THREE_PIN D3
-#define SWITCH_FOUR_PIN D4
-#define SWITCH_FIVE_PIN D5
 
 
 // Variables
@@ -69,12 +63,13 @@ unsigned long currentTime = millis();
 unsigned long lastTimeButtonPressed = millis();
 boolean currentState = FALSE;
 boolean lastState;
+boolean switchOneState = 0;
+boolean switchTwoState = 0;
+boolean switchThreeState = 0;
+boolean switchFourState = 0;
+boolean switchFiveState = 0;
 
 // Functions
-// int convertStringRollsToInts(String diceRolls) {
-//   return 0;
-// };
-/*
 int* convertStringtoArray(String diceRolls) {
   int* array = new int[5];
   for (int i = 0; i < 5; i++) {
@@ -84,7 +79,37 @@ int* convertStringtoArray(String diceRolls) {
   return array;
  
 }
-*/
+
+int updateSwitchState(String arguments) {
+
+  boolean state;
+  int index = (arguments.substring(0,1)).toInt();
+  int switchState = (arguments.substring(2)).toInt();
+  if (switchState == 1) {
+    state = true;
+  } else {
+    state = false;
+  }
+
+  if (index == 1) {
+    switchOneState = state;
+  } else if (index == 2) {
+    switchTwoState = state;
+  }
+  else if (index == 3) {
+    switchThreeState = state;
+  }
+  else if (index == 4) {
+    switchFourState = state;
+  }
+  else if (index == 5) {
+    switchFiveState = state;
+  } else {
+    return -1;
+  }
+
+  return 0;
+}
 
 /* From the web page javascript code; to see order in which scores are interpreted by the webpage
 must packaged score data accordingly
@@ -135,7 +160,7 @@ void updateScore() {
 
 void ifButtonsPressed() {
 
-  boolean yellowButtonValue = digitalRead(YELLOW_PUSH_BUTTON_PIN);
+  //boolean yellowButtonValue = digitalRead(YELLOW_PUSH_BUTTON_PIN);
   boolean greenButtonValue = digitalRead(GREEN_PUSH_BUTTON_PIN);
 
   currentTime = millis();
@@ -171,11 +196,11 @@ void ifButtonsPressed() {
 }
 
 void switchUpdate() {
-  fiveDice->select(1, digitalRead(SWITCH_ONE_PIN));
-  fiveDice->select(2, digitalRead(SWITCH_TWO_PIN));
-  fiveDice->select(3, digitalRead(SWITCH_THREE_PIN));
-  fiveDice->select(4, digitalRead(SWITCH_FOUR_PIN));
-  fiveDice->select(5, digitalRead(SWITCH_FIVE_PIN));
+  fiveDice->select(1, switchOneState);
+  fiveDice->select(2, switchTwoState);
+  fiveDice->select(3, switchThreeState);
+  fiveDice->select(4, switchFourState);
+  fiveDice->select(5, switchFiveState);
 }
 
 
@@ -209,14 +234,15 @@ void setup() {
   pinMode(YELLOW_PUSH_BUTTON_PIN, INPUT_PULLDOWN);
   pinMode(GREEN_PUSH_BUTTON_PIN, INPUT);
   pinMode(BUZZER_PIN, OUTPUT);
-  pinMode(SWITCH_ONE_PIN, INPUT_PULLDOWN);
-  pinMode(SWITCH_TWO_PIN, INPUT_PULLDOWN);
-  pinMode(SWITCH_THREE_PIN, INPUT_PULLDOWN);
-  pinMode(SWITCH_FOUR_PIN, INPUT_PULLDOWN);
-  pinMode(SWITCH_FIVE_PIN, INPUT_PULLDOWN);
   // Cloud Variables + Functions
   //Particle.variable("RollsLeft", rollsLeft);
   Particle.variable("roll", score);
+  Particle.variable("SwitchOneState", switchOneState);
+  Particle.variable("SwitchTwoState", switchTwoState);
+  Particle.variable("SwitchThreeState", switchThreeState);
+  Particle.variable("SwitchFourState", switchFourState);
+  Particle.variable("SwitchFiveState", switchFiveState);
+  Particle.function("UpdateSwitchState", updateSwitchState);
 
   //seeding random number generation
   srand(millis());
@@ -230,19 +256,19 @@ void loop() {
   // Print LCD
   updateLCD();
 
-  //delay(1000);
+  delay(1000);
   Serial.print("Is Button Clicked: ");
   Serial.println(digitalRead(YELLOW_PUSH_BUTTON_PIN));
   Serial.print("Switch 1: ");
-  Serial.println(digitalRead(SWITCH_ONE_PIN));
+  Serial.println(switchOneState);
   Serial.print("Switch 2: ");
-  Serial.println(digitalRead(SWITCH_TWO_PIN));
+  Serial.println(switchTwoState);
   Serial.print("Switch 3: ");
-  Serial.println(digitalRead(SWITCH_THREE_PIN));
+  Serial.println(switchThreeState);
   Serial.print("Switch 4: ");
-  Serial.println(digitalRead(SWITCH_FOUR_PIN));
+  Serial.println(switchFourState);
   Serial.print("Switch 5: ");
-  Serial.println(digitalRead(SWITCH_FIVE_PIN));
+  Serial.println(switchFiveState);
   Serial.print("Score string: ");
   Serial.println(score);
   Serial.print("Get Select: ");

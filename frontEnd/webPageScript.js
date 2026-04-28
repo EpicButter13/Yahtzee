@@ -64,7 +64,7 @@ setInterval(updateFromCloud, 2000);
 
 
 // Function to add functionality to the buttons that select which dice to reroll
-function rollThis(die)
+function rollThis(die, index)
 {
   // Send a boolean data type, as this function determines whether a die is selected or not and sends that data back to the microcontroller
   // Change the color of the selected button to clearly show that the player successfully selected a die
@@ -72,11 +72,37 @@ function rollThis(die)
   //console.log("THIS IS THE DIE ID: " + die.id);
   if(die.style.backgroundColor != "green") // Color to change to deselect die
   {
+    particle.callFunction({
+        deviceId: identificationDetails,
+        name: 'UpdateSwitchState',   // must match what's registered on the Photon
+        argument: `${index},1`,         // string argument passed to the function
+        auth: accessToken
+    })
+    .then(data => {
+        console.log('Function called, result:', data.body.return_value);
+        // Update UI here based on return value if needed
+    })
+    .catch(err => {
+        console.error('Error calling function:', err);
+    });
     die.style.backgroundColor = "green";
     return true;
   }
   else // Color to change to select the die
   {
+    particle.callFunction({
+        deviceId: identificationDetails,
+        name: 'UpdateSwitchState',   // must match what's registered on the Photon
+        argument: `${index},0`,         // string argument passed to the function
+        auth: accessToken
+    })
+    .then(data => {
+        console.log('Function called, result:', data.body.return_value);
+        // Update UI here based on return value if needed
+    })
+    .catch(err => {
+        console.error('Error calling function:', err);
+    });
     die.style.backgroundColor = "gray";
     return false;
   }

@@ -6,5 +6,6 @@
     },
     "particle.firmwareVersion": "6.2.1",
     "particle.targetPlatform": "p2",
-    "particle.targetDevice": "MyPhoton"
+    "particle.targetDevice": "MyPhoton",
+    "particle.debugWarningShown": true
 }
