@@ -91,18 +91,18 @@ int updateSwitchState(String arguments) {
     state = false;
   }
 
-  if (index == 1) {
+  if (index == 0) {
     switchOneState = state;
-  } else if (index == 2) {
+  } else if (index == 1) {
     switchTwoState = state;
   }
-  else if (index == 3) {
+  else if (index == 2) {
     switchThreeState = state;
   }
-  else if (index == 4) {
+  else if (index == 3) {
     switchFourState = state;
   }
-  else if (index == 5) {
+  else if (index == 4) {
     switchFiveState = state;
   } else {
     return -1;
@@ -178,7 +178,7 @@ void ifButtonsPressed() {
     diceRoll4 = fiveDice->getDiceValue(4);
     diceRoll5 = fiveDice->getDiceValue(5);
     updateScore();
-    tone(BUZZER_PIN, 440, 500);
+    tone(BUZZER_PIN, 1000, 1000);
   }
 
   if (greenButtonValue) {
@@ -256,7 +256,7 @@ void loop() {
   // Print LCD
   updateLCD();
 
-  delay(1000);
+  //delay(1000);
   Serial.print("Is Button Clicked: ");
   Serial.println(digitalRead(YELLOW_PUSH_BUTTON_PIN));
   Serial.print("Switch 1: ");

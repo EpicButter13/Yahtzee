@@ -81,8 +81,8 @@ function updateFromCloud() {
 // Start immediately
 updateFromCloud();
 
-// Poll every 2 seconds
-setInterval(updateFromCloud, 2000);
+// Poll every 1 second
+setInterval(updateFromCloud, 1000);
 
 
 
