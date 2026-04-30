@@ -1,7 +1,7 @@
 # Yahtzee
 
 # 1
-Created by Shreyas Pradeep, Shriyan Dey, & Aadi Sharm
+Created by Shreyas Pradeep, Shriyan Dey, & Aadi Sharma
 
 # 2
 
@@ -17,5 +17,6 @@ Particle Photon 2
 NeoPixel LED 
 Speaker
 LCD Display
+Push Buttons
 
 # 5
