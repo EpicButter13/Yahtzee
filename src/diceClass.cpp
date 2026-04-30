@@ -3,8 +3,10 @@
 #include <ctime>
 using namespace std;
 
+//Yahtzee is always played with five dice
 const int NUM_DICE = 5;
 
+//Code modeled based on previous homework assignments; utilizes random number generation to simulate dice
 class dice
 {
     public:
@@ -14,7 +16,7 @@ class dice
         maxRoll = 6;
     }
 
-    /*
+    /* unused constructor, since only default dice are used
     dice(int minValue, int maxValue)
     {
         minRoll = minValue;
@@ -33,15 +35,16 @@ class dice
     int maxRoll;
 };
 
+//diceSet holds dice roll values, the number of rolls left, and functions calculate potential hand scores
 class diceSet
 {
     public:
-    diceSet()
+    diceSet() //default constructor - each turn of the game gets 3 rolls
     {
         rolls = 3;
     }
     
-    void roll()
+    void roll() //generates and stores 5 random numbers (1-6 inclusive in this case)
     {
         if (rolls > 0)
         {
@@ -72,7 +75,7 @@ class diceSet
             return 0;
         }
     }
- /*   
+ /* for testing purposes - most of this information is instead presented on a webpage
     void print()
     {
         cout << "Rolls left: " << rolls << endl;
@@ -99,7 +102,7 @@ class diceSet
         
     }
 */
-    void select(int dieNum)
+    void select(int dieNum) //selecting a dice in Yahtzee means locking its value and not rolling it
     {
         if (1 <= dieNum && dieNum <= NUM_DICE)
         {
@@ -120,7 +123,7 @@ class diceSet
        return selected[index];
     }
 
-    int handSum()
+    int handSum() //sum of all 5 dice values
     {
         int sum = 0;
         for (int i = 0; i < NUM_DICE; i++)
@@ -130,7 +133,7 @@ class diceSet
         return sum;
     }
 
-    int countNum (int num)
+    int countNum (int num) //used in score calculations
     {
         int count = 0;
         for (int i = 0; i < NUM_DICE; i++)
@@ -143,12 +146,12 @@ class diceSet
         return count;
     }
 
-    int basicHand(int num)
+    int basicHand(int num) //a basic hand is something like a score of 3 for having three different dice with the value 1
     {
         return num * this->countNum(num);
     }
 
-    int maxCount()
+    int maxCount() //used in score calculations (i.e to check if three of the same value is present in the hand)
     {
         int count;
         int mCount = this->countNum(1);
@@ -187,7 +190,7 @@ class diceSet
         }
     }
 
-    int yahtzee()
+    int yahtzee() //same as five of a kind
     {
         int count = this->maxCount();
         if (count == 5)
@@ -199,7 +202,7 @@ class diceSet
         }
     }
 
-    int fullHouse()
+    int fullHouse() //a hand that contains 3 of a kind and 2 of a kind
     {
         if (this->maxCount() == 3)
         {
@@ -214,6 +217,8 @@ class diceSet
         }
         return 0;
     }
+
+    //some hands require checking consecutive runs of dice values. The following functions sort the dice values and count these runs (straights).
 
     int* sort()
     {
@@ -301,7 +306,7 @@ class diceSet
     bool selected[NUM_DICE] = {};
     int rolls;
 };
-
+// this main function was used for testing before the wepbage was setup
 // int main()
 // {
 //     int totalScore = 0; //variable to keep track of player score for their three rolls
