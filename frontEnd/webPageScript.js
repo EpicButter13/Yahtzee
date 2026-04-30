@@ -87,24 +87,20 @@ setInterval(updateFromCloud, 1000);
 
 
 
-// Function to add functionality to the buttons that select which dice to reroll
+// Adds button functionality
 function rollThis(die, index)
 {
-  // Send a boolean data type, as this function determines whether a die is selected or not and sends that data back to the microcontroller
-  // Change the color of the selected button to clearly show that the player successfully selected a die
-  //console.log(document.getElementById(die.id));
-  //console.log("THIS IS THE DIE ID: " + die.id);
+  // Change the color of the selected button to show whether dice is locked in or not
   if(die.style.backgroundColor != "green") // Color to change to deselect die
   {
     particle.callFunction({
         deviceId: identificationDetails,
-        name: 'UpdateSwitchState',   // must match what's registered on the Photon
-        argument: `${index},1`,         // string argument passed to the function
+        name: 'UpdateSwitchState',  
+        argument: `${index},1`,    // string parsed later     
         auth: accessToken
     })
     .then(data => {
         console.log('Function called, result:', data.body.return_value);
-        // Update UI here based on return value if needed
     })
     .catch(err => {
         console.error('Error calling function:', err);
@@ -113,17 +109,16 @@ function rollThis(die, index)
     playSound(lockInSound);
     return true;
   }
-  else // Color to change to select the die
+  else
   {
     particle.callFunction({
         deviceId: identificationDetails,
-        name: 'UpdateSwitchState',   // must match what's registered on the Photon
-        argument: `${index},0`,         // string argument passed to the function
+        name: 'UpdateSwitchState', 
+        argument: `${index},0`,   // string parsed later
         auth: accessToken
     })
     .then(data => {
         console.log('Function called, result:', data.body.return_value);
-        // Update UI here based on return value if needed
     })
     .catch(err => {
         console.error('Error calling function:', err);
@@ -132,6 +127,4 @@ function rollThis(die, index)
     playSound(unlockSound);
     return false;
   }
-
-  // Note: Will probably need to utilize Particle functions to send/change data for cloud variables from the webPage
 }
