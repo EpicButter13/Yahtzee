@@ -70,7 +70,7 @@ boolean switchFourState = 0;
 boolean switchFiveState = 0;
 
 // Functions
-int* convertStringtoArray(String diceRolls) {
+int* convertStringtoArray(String diceRolls) { 
   int* array = new int[5];
   for (int i = 0; i < 5; i++) {
     String roll = diceRolls.substring(i, 1);
@@ -167,6 +167,7 @@ void ifButtonsPressed() {
   lastState = currentState;
   currentState = digitalRead(YELLOW_PUSH_BUTTON_PIN);
 
+  // Update dice roll values
   if ((lastState == FALSE && currentState == TRUE)) {
     Serial.println("PRESSED!!?!?!??!");
     lastTimeButtonPressed = millis();
@@ -181,6 +182,7 @@ void ifButtonsPressed() {
     tone(BUZZER_PIN, 1000, 1000);
   }
 
+  // Reset dice class
   if (greenButtonValue) {
     delete fiveDice;
     fiveDice = new diceSet;
@@ -195,7 +197,7 @@ void ifButtonsPressed() {
 
 }
 
-void switchUpdate() {
+void switchUpdate() { // Update switches to either TRUE or FALSE
   fiveDice->select(1, switchOneState);
   fiveDice->select(2, switchTwoState);
   fiveDice->select(3, switchThreeState);

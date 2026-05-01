@@ -15,8 +15,6 @@ Actuators:
 Speaker: Plays a sound effect when the yellow button is pressed, to emulate the audio feedback of rolling dice.
 Liquid Crystal Display: Displays the number value of each of the five dice as well as the number of rolls left.
 
-
-
 Cloud Connectivity: 
 HTML and javascript files were used to generate a rudimentary webpage.
 
@@ -30,10 +28,11 @@ displayStyle.css - CSS file that customizes displayGameData.html file
 webPageScript.js - Javascript file that uses particle functions to add functionality to buttons and scores on displayGameData.html file
 
 # 4 REMINDER TO LOOK AT COMPONENTS AND ADD THEIR PART NUMBERS!!!!!!
-Particle Photon 2
-NeoPixel LED 
-Speaker
-LCD Display
-Push Buttons
+(1) Particle Photon 2
+(1) Passive Buzzer
+(1) LCD1602 Module
+(2) Push Buttons
 
 # 5
+[Wiring_Diagram](Wiring_Diagram.png)
+*Press the click while holding command

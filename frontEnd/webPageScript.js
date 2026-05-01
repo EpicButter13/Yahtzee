@@ -13,7 +13,7 @@ function playSound(sound) // Ensures audio plays no matter how fast button is cl
   const s = sound.cloneNode(); // duplicate audio
   s.play();
 }
-function toggleMusic() 
+function toggleMusic()  // Turn music On/Off
 {
   const music = document.getElementById("Sky_High");
 
@@ -47,7 +47,7 @@ function updateScores(scoreString) {
     "large_straight_score",
     "yahtzee_score",
     "chance_score"
-  ];
+  ]; // Ids for all the score values
 
   for (let i = 0; i < ids.length; i++) {
     const el = document.getElementById(ids[i]);
@@ -76,7 +76,7 @@ function updateFromCloud() {
   .catch(function(err) {
     console.log("Particle error:", err);
   });
-}
+} // Get variable from cloud
 
 // Start immediately
 updateFromCloud();
